@@ -49,6 +49,7 @@ app.use((req, res) => {
 })
 
 app.use(errorHandler)
+//railway deployment fix
 
 const PORT = process.env.PORT || 5000;
 
