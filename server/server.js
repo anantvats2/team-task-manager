@@ -22,17 +22,7 @@ const allowedOrigins = [
   ...(process.env.CLIENT_URL ? [process.env.CLIENT_URL] : []),
 ]
 
-app.use(
-  cors({
-    origin(origin, callback) {
-      // Allow non-browser requests (no Origin header) and known frontends.
-      if (!origin) return callback(null, true)
-      if (allowedOrigins.includes(origin)) return callback(null, true)
-      return callback(new Error('Not allowed by CORS'))
-    },
-    credentials: true,
-  }),
-)
+app.use(cors())
 app.use(express.json())
 
 app.get('/api/health', (req, res) => {
