@@ -13,6 +13,10 @@ connectDB()
 
 const app = express()
 
+app.get("/", (req, res) => {
+  res.status(200).send("Backend is alive 🚀");
+});
+
 const allowedOrigins = [
   'http://localhost:5173',
   ...(process.env.CLIENT_URL ? [process.env.CLIENT_URL] : []),
@@ -30,10 +34,6 @@ app.use(
   }),
 )
 app.use(express.json())
-
-app.get("/", (req, res) => {
-  res.status(200).send("Backend is running 🚀");
-});
 
 app.get('/api/health', (req, res) => {
   res.status(200).json({ message: 'Server is running' })
