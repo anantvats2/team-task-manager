@@ -31,6 +31,10 @@ app.use(
 )
 app.use(express.json())
 
+app.get("/", (req, res) => {
+  res.status(200).send("Backend is running 🚀");
+});
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({ message: 'Server is running' })
 })
